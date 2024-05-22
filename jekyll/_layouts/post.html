@@ -1,0 +1,21 @@
+---
+blog-css:
+  - "/css/blogpost.css"
+---
+
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    {% if layout.blog-css %}
+      {% for css in layout.blog-css %}
+        <link rel="stylesheet" href="{{ css | relative_url }}">
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body>
+    <div>
+      {{ content }}
+    </div>    
+  </body>
+</html>
+
