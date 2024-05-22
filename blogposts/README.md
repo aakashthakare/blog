@@ -1,3 +1,5 @@
-# Blog
-
-Collection of all notes and resources collected duing research for respective blog post.
+# Blog Posts
+- Create separate folder for each blog.
+- Keep assets separate for each blog.
+- Execute following command `./prepare.sh <blogpost_folder>` to generate HTML.
+- Check `output` folder.

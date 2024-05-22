@@ -1,3 +1,9 @@
+---
+layout: post
+permalink: /
+title: Sample Blog Post
+---
+
 # Sample Blog Post
 
 ## ☁️ Why?
