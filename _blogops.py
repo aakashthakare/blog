@@ -9,14 +9,13 @@ from googleapiclient.errors import HttpError
 from bs4 import BeautifulSoup
 
 SCOPES = ['https://www.googleapis.com/auth/blogger']
-REDIRECT_URI = os.environ['REDIRECT_URI']
 CLIENT_SECRETS_FILE = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
 TOKEN_FILE = os.environ['TOKEN_FILE']
 BLOG_ID = os.environ['BLOG_ID']
 
 def refresh_token():
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-    flow.redirect_uri = REDIRECT_URI
+    flow.redirect_uri = os.environ['REDIRECT_URI']
     credentials = flow.run_local_server(port=8080)
     
     with open('token.json', 'w') as token:
