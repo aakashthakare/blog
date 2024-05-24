@@ -8,7 +8,7 @@ fi
 DIR="blogposts/$blogpost"
 IS_INIT=$([ -d "$DIR" ] && echo 1 || echo 0)
 
-if [ IS_INIT == 0 ];
+if [ $IS_INIT == 0 ];
 then
    echo "Initializing $blogpost..."
    python3 _init.py "$blogpost"
