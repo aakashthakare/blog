@@ -7,12 +7,13 @@ import googleapiclient.discovery
 from googleapiclient.errors import HttpError
 
 SCOPES = ['https://www.googleapis.com/auth/blogger']
-CLIENT_SECRETS_FILE = "credentials.json"
+CLIENT_SECRETS_FILE = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
 REDIRECT_URI = "http://localhost:8080/"
 BLOG_ID = os.environ['BLOG_ID']
 
 def main():
-    title = sys.argv[1].replace(" ", "_")
+    title = sys.argv[1]
+    print(f"{BLOG_ID}")
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
     flow.redirect_uri = REDIRECT_URI
     
