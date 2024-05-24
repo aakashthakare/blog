@@ -4,3 +4,4 @@ _site
 credentials.json
 .scratch
 .env
+output

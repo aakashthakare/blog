@@ -1,20 +1,25 @@
 #!/bin/sh
-echo $1
-if [ "$1" == "init" ]
-then
-   echo "Initializing the blog post"
-   python3 _init.py "$2"
+blogpost=$1
+
+if [[ "$blogpost" == draft/* ]]; then
+    blogpost=$(echo "$blogpost" | sed 's/^draft\///')
 fi
 
-if [ "$1" == "update" ]
+DIR="blogposts/$blogpost"
+IS_INIT=$([ -d "$DIR" ] && echo 1 || echo 0)
+
+if [ IS_INIT == 0 ];
 then
-    echo "Building $2"
-    scp -r "blogposts/$2" "jekyll/"
-    jekyll build -s "jekyll/" -d "output/$2"
-    mv output/$2/$2/* output/$2/
-    rm -rf "jekyll/$2"
-    rm -rf output/$2/$2
+   echo "Initializing $blogpost..."
+   python3 _init.py "$blogpost"
+else
+    echo "Updating $blogpost..."
+    scp -r "blogposts/$blogpost" "jekyll/"
+    jekyll build -s "jekyll/" -d "output/$blogpost"
+    mv output/$blogpost/$blogpost/* output/$blogpost/
+    rm -rf "jekyll/$blogpost"
+    rm -rf output/$blogpost/$blogpost
     indexHtml=;
     echo $indexHtml
-    python3 "_update.py" "$(pwd)/output/$2/index.html" "$2"
+    python3 "_update.py" "$(pwd)/output/$blogpost/index.html" "$blogpost"
 fi
