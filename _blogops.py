@@ -17,7 +17,7 @@ def refresh_token():
     flow.redirect_uri = os.environ['REDIRECT_URI']
     credentials = flow.run_local_server(port=8080)
     
-    with open('token.json', 'w') as token:
+    with open(TOKEN_FILE, 'w') as token:
         token.write(creds.to_json())
 
 def init():
@@ -38,7 +38,7 @@ def init():
         folderPath = f'./blogposts/{title}'
         os.mkdir(folderPath)
         os.mkdir(f'{folderPath}/images')
-        print("Inside init2")
+        
         mdfile = open(f"{folderPath}/{title}.md", "w")
         mdfile.write(f"""---
 layout: post
