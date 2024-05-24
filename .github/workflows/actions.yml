@@ -8,30 +8,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.ref_name }}
-    
-    - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
         with:
-          python-version: '3.x'
+          ref: ${{ github.ref_name }}
+      
+      - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
-    - name: Create Google API credentials file
-      run: |
-        echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
+      - name: Create Google API credentials file
+        run: |
+          echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
 
-    - name: Blog action
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: credentials.json
-        BLOG_ID: ${{ secrets.BLOG_ID }}
-      run: |
-          ./blog.sh ${{ github.ref_name }}
-    
-    - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Blog action
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: credentials.json
+          BLOG_ID: ${{ secrets.BLOG_ID }}
+        run: |
+            ./blog.sh ${{ github.ref_name }}
+      
+      - uses: stefanzweifel/git-auto-commit-action@v5
