@@ -32,6 +32,7 @@ jobs:
       
       - name: Install dependencies
         run: |
+          cd jekyll
           bundle install
 
       - name: Create Google API credentials file
