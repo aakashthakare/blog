@@ -32,6 +32,6 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: credentials.json
           BLOG_ID: ${{ secrets.BLOG_ID }}
         run: |
-            ./blog.sh ${{ github.ref_name }}
+            bash blog.sh ${{ github.ref_name }}
       
       - uses: stefanzweifel/git-auto-commit-action@v5
