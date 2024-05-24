@@ -37,6 +37,8 @@ jobs:
 
       - name: Create Google API credentials file
         run: |
+          echo $(pwd)
+          cd ../
           echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
 
       - name: Blog action
