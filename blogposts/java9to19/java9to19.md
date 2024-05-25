@@ -124,6 +124,24 @@ public class Test {
 Notice the multiple `StringBuilder` invocations in case of Java 8, which is replaced with `makeConcatWithConstants` in Java 9.
 
 ## Java 10
+- Local variable type interface, use `var` to declare.
+```
+    var i = 1;
+    var str = "Hello";
+    var student = getStudent();
+```
+
+- Static factory methods to create immutable copy of Collection,
+```
+    List<String> immutable = List.copyOf(otherList);
+```
+
+- `orElseThrow()` in Optional
+```
+    Optional<Object> optional = Optional.ofNullable(null);
+    optional.orElseThrow(() -> new RuntimeException("Something went wrong!"));
+```
+
 
 ## Java 11
 
