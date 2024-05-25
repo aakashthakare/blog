@@ -299,12 +299,12 @@ Can be used,
 Person person = new Person("Human", 999);
 System.out.printf("Person %s, age %d\n", person.name(), person.age());
 ```
-> Things to note about `record`
-> - Can not extend, can not be extended by class
-> - Can not be abstract
-> - Allows static fields and methods 
-> - Instance fields can be declared during initialization.
-> - Declared fields are private and final
+Things to note about `record`
+- Can not extend, can not be extended by class
+- Can not be abstract
+- Allows static fields and methods 
+- Instance fields can be declared during initialization.
+- Declared fields are private and final
 
 ```
 record Person(String name, int age){
@@ -356,6 +356,7 @@ System.out.println(textBlock);
 
 ## Java 15
 - Preview of `sealed` classes or interfacse, to allow only specific types which can extend or implement respectively.
+
 ```
 public abstract sealed class Animal permits Herbivore, Carnivore {
 }
@@ -366,10 +367,10 @@ sealed class Carnivore extends Animal{}
 //class Unknown extends Animal{} // Not allowed to extend
 ```
 
-> Subclass of a sealed class must have either of the following modifiers,
-> - `sealed` : Will allow to be extended further by permitted classes.
-> - `non-sealed` : Will allow to be extended further by any classes.
-> - `final` : Will not allow to be extended further.
+Subclass of a sealed class must have either of the following modifiers,
+- `sealed` : Will allow to be extended further by permitted classes.
+- `non-sealed` : Will allow to be extended further by any classes.
+- `final` : Will not allow to be extended further.
 
 ```
 public abstract sealed class Animal permits Herbivore, Carnivore, Omnivore {
@@ -383,6 +384,7 @@ final class Tiger extends Carnivore{}
 ```
 
 - Records can implement the sealed interfaces,
+
 ```
 sealed interface Food permits Creature {
     void doSomething();
