@@ -73,7 +73,7 @@ def _post_():
         soup = BeautifulSoup(file.read(), "html.parser")
             
         for img in soup.findAll('img'):
-            img['src'] = 'https://github.com/aakashthakare/blog/blob/main/blogposts/' + sys.argv[3] + '/' + img['src'] + '?raw=true'
+            img['src'] = 'https://github.com/aakashthakare/blog/blob/draft/' + sys.argv[3] + '/blogposts/' + sys.argv[3] + '/' + img['src'] + '?raw=true'
         
         postid = soup.find(id = 'atptid').string
         title = soup.find(id = 'titleid').string
