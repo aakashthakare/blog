@@ -16,7 +16,7 @@ In this post we will take a look at the evolution happened in Java language from
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
 ```
 - JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
-<img src="images/jshell.png" width=500 height=320>
+<img src="images/jshell.png" width=640 height=320>
 
 - Private methods in interface. This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
 ```
@@ -355,8 +355,69 @@ System.out.println(textBlock);
 
 
 ## Java 15
+- Preview of `sealed` classes or interfacse, to allow only specific types which can extend or implement respectively.
+```
+public abstract sealed class Animal permits Herbivore, Carnivore {
+}
+
+final class Herbivore extends Animal{}
+sealed class Carnivore extends Animal{}
+
+//class Unknown extends Animal{} // Not allowed to extend
+```
+> Subclass of a sealed class must have either of the following modifiers,
+> - `sealed` : Will allow to be extended further by permitted classes.
+> - `non-sealed` : Will allow to be extended further by any classes.
+> - `final` : Will not allow to be extended further.
+
+```
+public abstract sealed class Animal permits Herbivore, Carnivore, Omnivore {
+}
+
+final class Herbivore extends Animal {}
+sealed class Carnivore extends Animal permits  Tiger{}
+non-sealed class Omnivore extends Animal {}
+
+final class Tiger extends Carnivore{}
+```
+- Records can implement the sealed interfaces,
+```
+sealed interface Food permits Creature {
+    void doSomething();
+} 
+record Creature(String name) implements Food {
+    @Override
+    public void doSomething() {
+        System.out.println("Anything");
+    }
+}
+```
 
 ## Java 16
+- Pattern matching in `instanceof` no longer makes variable implicitly `final`
+```
+if(object instanceof String) {
+    object = String.format("Result %s", object); // Would give compile time error prior to Java 16.
+    System.out.println(object.toUpperCase());
+}
+```
+- New Vector API, incubator.
+```
+int[] odd = {1, 3, 5, 7};
+int[] even = {2, 4, 6, 8};
+var vector1 = IntVector.fromArray(IntVector.SPECIES_128, odd, 0);
+var vector2 = IntVector.fromArray(IntVector.SPECIES_128, even, 0);
+var vector3 = vector1.add(vector2);
+System.out.println(vector3);
+```
+**Output**
+```
+[3, 7, 11, 15]
+```
+Note that, to run the program you will need to add the module otherwise it won't be visible.
+```
+ java --add-modules jdk.incubator.vector JavaMainClass
+```
 
 ## Java 17 (LTS)
 
