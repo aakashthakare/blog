@@ -10,15 +10,15 @@ Java 8 is still extensively used in the industry and many applications will grad
 In this post we will take a look at the evolution happened in Java language from Java 9 to Java 19. Note that each version comes with many improvements, bug fixes and variety of features, we will cover the ones which are majorly used and can impact our day to day developement.
 
 ## Java 9
-- Factory methods for collection
+Factory methods for collection
 ```
     List immutableL = List.of(1, 2, 3);
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
 ```
-- JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
+JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
 <img src="images/jshell.png" width=640 height=320>
 
-- Private methods in interface. This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
+Private methods in interface. This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
 ```
     interface Student {
     private String joinNames(String firstName, String lastName) {
@@ -35,7 +35,7 @@ In this post we will take a look at the evolution happened in Java language from
 }
 ```
 
-- Step in a direction to optimize String concatenation.
+Step in a direction to optimize String concatenation.
 
 For the given class,
 ```
@@ -124,27 +124,27 @@ public class Test {
 Notice the multiple `StringBuilder` invocations in case of Java 8, which is replaced with `makeConcatWithConstants` in Java 9.
 
 ## Java 10
-- Local variable type interface, use `var` to declare.
+Local variable type interface, use `var` to declare.
 ```
     var i = 1;
     var str = "Hello";
     var student = getStudent();
 ```
 
-- Static factory methods to create immutable copy of Collection,
+Static factory methods to create immutable copy of Collection,
 ```
     List<String> immutable = List.copyOf(otherList);
 ```
 
-- `orElseThrow()` in Optional
+`orElseThrow()` in Optional
 ```
     Optional<Object> optional = Optional.ofNullable(null);
     optional.orElseThrow(() -> new RuntimeException("Something went wrong!"));
 ```
 
 ## Java 11 (LTS)
-- Execute Java file directly without compiling with `javac`. `java` command internally takes care of the compilation.
-- Some helper methods for `String`
+Execute Java file directly without compiling with `javac`. `java` command internally takes care of the compilation.
+Some helper methods for `String`
 ```
 String str = "Hello";
 boolean isBlank = str.isBlank();
@@ -154,7 +154,7 @@ str = str.strip();
 //  str.stripTrailing();
 ```
 
-- Removed deprecated packages,
+Removed deprecated packages,
 ```
 java.xml.ws
 java.xml.bind
@@ -167,7 +167,7 @@ jdk.xml.ws
 jdk.xml.bind
 ```
 
-- Make file read and write convenient,
+Make file read and write convenient,
 
 ```
 Path path = Files.writeString(Files.createTempFile("temporary", ".txt"), "Something to write!");
@@ -177,7 +177,9 @@ System.out.println(fileContent);
 ```
 
 ## Java 12
-- Switch can be an expression, changes are in preview.
+
+Switch can be an expression, changes are in preview.
+
 Before Java 12
 ```
 Animals animal = Animals.COW;
@@ -201,7 +203,8 @@ String animalType = switch (animal) {
     case TIGER,  LION -> "Carnivore";
 };
 ```
-- No need to typecast for `instanceof`
+
+No need to typecast for `instanceof`,
 ```
 if(object instanceof String) {
     System.out.println(((String)object).toUpperCase());
@@ -213,7 +216,8 @@ if(object instanceof String str) {
     System.out.println(str.toUpperCase());
 }
 ```
-- Compare files,
+
+Compare files,
 ```
 try {
     Path filePath1 = Files.createTempFile("abc1", ".txt");
@@ -232,18 +236,24 @@ try {
     throw new RuntimeException(e);
 }
 ```
+
 **Output**
+
 ```
 Mismatch found at 6
 ```
-- String Identation,
+
+String Identation,
+
 ```
 String str = "Hello";
 for(int i = 0 ; i < 5; i++) {
     System.out.print(str.indent(i));
 }
 ```
+
 **Output**
+
 ```
 Hello
  Hello
@@ -251,7 +261,8 @@ Hello
    Hello
     Hello
 ```
-- Convenient method to transform String,
+
+Convenient method to transform String,
 
 ```
 String numbers = "1:ONE,2:TWO,3:THREE";
@@ -266,7 +277,7 @@ System.out.println(map);
 ```
 
 ## Java 13
-- Text block support in String,
+Text block support in String,
 ```
 String textBlock = """
     I can write anything,
@@ -274,11 +285,11 @@ String textBlock = """
     """;
 System.out.println(textBlock);
 ```
-- New Methods in String for format,
+New Methods in String for format,
 ```
 String anything = "Hello %d and %s".formatted(1, "ONE");
 ```
-- Intoduced `yield` in switch case, this will replace the `break` for cases where we want to return the number. Difference between `yeild` and `return` is that `yeild` will return the value to `switch` invocation while `return` will return the value to the caller of the method.
+Intoduced `yield` in switch case, this will replace the `break` for cases where we want to return the number. Difference between `yeild` and `return` is that `yeild` will return the value to `switch` invocation while `return` will return the value to the caller of the method.
 ```
 int answer = switch (number) {
     case 1:
@@ -292,7 +303,7 @@ int answer = switch (number) {
 ```
 
 ## Java 14
-- Preview of `records`, a data class.
+Preview of `records`, a data class.
 ```
 record Person(String name, int age){}
 ```
@@ -346,7 +357,7 @@ record Person(String name, int age){
     }
 }
 ```
-- Allow trailing space in text block,
+Allow trailing space in text block,
 ```
 String textBlock = """
     I can write anything,
@@ -357,7 +368,7 @@ System.out.println(textBlock);
 
 
 ## Java 15
-- Preview of `sealed` classes or interfacse, to allow only specific types which can extend or implement respectively.
+Preview of `sealed` classes or interfacse, to allow only specific types which can extend or implement respectively.
 
 ```
 public abstract sealed class Animal permits Herbivore, Carnivore {
@@ -385,7 +396,7 @@ non-sealed class Omnivore extends Animal {}
 final class Tiger extends Carnivore{}
 ```
 
-- Records can implement the sealed interfaces,
+Records can implement the sealed interfaces,
 
 ```
 sealed interface Food permits Creature {
@@ -400,14 +411,14 @@ record Creature(String name) implements Food {
 ```
 
 ## Java 16
-- Pattern matching in `instanceof` no longer makes variable implicitly `final`
+Pattern matching in `instanceof` no longer makes variable implicitly `final`
 ```
 if(object instanceof String) {
     object = String.format("Result %s", object); // Would give compile time error prior to Java 16.
     System.out.println(object.toUpperCase());
 }
 ```
-- New Vector API, incubator.
+New Vector API, incubator.
 ```
 int[] odd = {1, 3, 5, 7};
 int[] even = {2, 4, 6, 8};
@@ -426,7 +437,7 @@ Note that, to run the program you will need to add the module otherwise it won't
 ```
 
 ## Java 17 (LTS)
-- `null` in switch,
+`null` in switch,
 ```
 switch (number) {
     case 1, 2, 3 -> System.out.println("Valid");
@@ -434,7 +445,7 @@ switch (number) {
     default -> System.out.println("Invalid");
 }
 ```
-- Pattern matching in switch,
+Pattern matching in switch,
 ```
 String value = switch (obj) {
     case Integer i -> "Integer";
@@ -447,7 +458,7 @@ String value = switch (obj) {
 ```
 
 ## Java 18
-- Introduce @snippet in JavaDoc to write code in comments,
+Introduce @snippet in JavaDoc to write code in comments,
 
 ```
 /**
@@ -460,13 +471,13 @@ public void testMethod() {
 }
 ```
 
-- Finalization is deprecated. 
+Finalization is deprecated. 
 
 ## Java 19
-- Preview Virtual Threads, lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
+Preview Virtual Threads, lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
 
 ```
 ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 ```
 
-- Structured Concurrency (Incubator), which sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.
+Structured Concurrency (Incubator), which sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.
