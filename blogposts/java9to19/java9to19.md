@@ -272,6 +272,22 @@ String textBlock = """
     """;
 System.out.println(textBlock);
 ```
+- New Methods in String for format,
+```
+String anything = "Hello %d and %s".formatted(1, "ONE");
+```
+- Intoduced `yield` in switch case, this will replace the `break` for cases where we want to return the number. Difference between `yeild` and `return` is that `yeild` will return the value to `switch` invocation while `return` will return the value to the caller of the method.
+```
+int answer = switch (number) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+        yield number;
+    default:
+        yield -1;
+};
+```
 
 ## Java 14
 
