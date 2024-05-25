@@ -250,7 +250,7 @@ Hello
    Hello
     Hello
 ```
-- Convinient method to transform String,
+- Convenient method to transform String,
 ```
 String numbers = "1:ONE,2:TWO,3:THREE";
 Map<Integer, String> map = numbers.transform(input -> {
@@ -264,6 +264,14 @@ System.out.println(map);
 ```
 
 ## Java 13
+- Text block support in String,
+```
+String textBlock = """
+    I can write anything,
+    without adding \\n in the String.
+    """;
+System.out.println(textBlock);
+```
 
 ## Java 14
 
