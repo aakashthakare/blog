@@ -168,7 +168,6 @@ jdk.xml.bind
 ```
 
 - Make file read and write convinient,
-
 ```
 Path path = Files.writeString(Files.createTempFile("temporary", ".txt"), "Something to write!");
 
@@ -177,6 +176,92 @@ System.out.println(fileContent);
 ```
 
 ## Java 12
+- Switch can be an expression, changes are in preview.
+Before Java 12
+```
+Animals animal = Animals.COW;
+
+switch (animal) {
+    case COW:
+    case GOAT:
+        System.out.println("Herbivore");
+        break;
+    case TIGER:
+    case LION:
+        System.out.println("Carnivore");
+        break;
+}
+```
+
+Can now be reduced to,
+```
+String animalType = switch (animal) {
+    case COW, GOAT -> "Herbivore";
+    case TIGER,  LION -> "Carnivore";
+};
+```
+- No need to typecast for `instanceof`
+```
+if(object instanceof String) {
+    System.out.println(((String)object).toUpperCase());
+}
+```
+but now you can do,
+```
+if(object instanceof String) {
+    System.out.println(object.toUpperCase());
+}
+```
+- Compare files,
+```
+try {
+    Path filePath1 = Files.createTempFile("abc1", ".txt");
+    Path filePath2 = Files.createTempFile("abc2", ".txt");
+
+    Files.writeString(filePath1, "Hello!");
+    Files.writeString(filePath2, "Hello! (Diff)");
+
+    long mismatchIndex = Files.mismatch(filePath1, filePath2);
+    if(mismatchIndex == -1) {
+        System.out.println("Both files are same!");
+    } else {
+        System.out.println("Mismatch found at " + mismatchIndex);
+    }
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+```
+**Output**
+```
+Mismatch found at 6
+```
+- String Identation,
+```
+String str = "Hello";
+for(int i = 0 ; i < 5; i++) {
+    System.out.print(str.indent(i));
+}
+```
+**Output**
+```
+Hello
+ Hello
+  Hello
+   Hello
+    Hello
+```
+- Convinient method to transform String,
+```
+String numbers = "1:ONE,2:TWO,3:THREE";
+Map<Integer, String> map = numbers.transform(input -> {
+    Map<Integer, String> output =
+        Arrays.stream(input.split(","))
+            .collect(Collectors.toMap(i -> Integer.parseInt(i.split(":")[0]),
+                i -> i.split(":")[1]));
+    return output;
+});
+System.out.println(map);
+```
 
 ## Java 13
 
