@@ -208,8 +208,8 @@ if(object instanceof String) {
 ```
 but now you can do,
 ```
-if(object instanceof String) {
-    System.out.println(object.toUpperCase());
+if(object instanceof String str) {
+    System.out.println(str.toUpperCase());
 }
 ```
 - Compare files,
@@ -420,7 +420,43 @@ Note that, to run the program you will need to add the module otherwise it won't
 ```
 
 ## Java 17 (LTS)
+- `null` in switch,
+```
+switch (number) {
+    case 1, 2, 3 -> System.out.println("Valid");
+    case null -> System.out.println("Not available");
+    default -> System.out.println("Invalid");
+}
+```
+- Pattern matching in switch,
+```
+String value = switch (obj) {
+    case Integer i -> "Integer";
+    case Long l    -> "Long";
+    case Double d  -> "Double";
+    case String s  -> "String";
+    case null -> "NULL";
+    default -> obj.toString();
+};
+```
 
 ## Java 18
+- Introduce @snippet in JavaDoc to write code in comments,
+```
+/**
+* {@snippet:
+*  int a = 10;
+* }
+*/
+public void testMethod() {
+
+}
+```
+- Finalization is deprecated. 
 
 ## Java 19
+- Preview Virtual Threads, lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
+```
+ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+```
+- Structured Concurrency (Incubator), which sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.
