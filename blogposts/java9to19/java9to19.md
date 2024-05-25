@@ -16,7 +16,7 @@ In this post we will take a look at the evolution happened in Java language from
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
 ```
 - JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
-<img src="images/jshell.png">
+<img src="images/jshell.png" width=500 height=320>
 
 - Private methods in interface. This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
 ```
@@ -48,7 +48,7 @@ public class Test {
 
 If we compile and check the bytecode, we can notice significant different in the way concatenation is handled. 
 
-In Java 8
+In Java 8,
 ```
 ➜  java git:(main) ✗ java -version 
 openjdk version "1.8.0_362"
@@ -142,8 +142,39 @@ Notice the multiple `StringBuilder` invocations in case of Java 8, which is repl
     optional.orElseThrow(() -> new RuntimeException("Something went wrong!"));
 ```
 
+## Java 11 (LTS)
+- Execute Java file directly without compiling with `javac`. `java` command internally takes care of the compilation.
+- Some helper methods for `String`
+```
+String str = "Hello";
+boolean isBlank = str.isBlank();
+str.lines().forEach(System.out::println);
+str = str.strip();
+// str.stripLeading();
+//  str.stripTrailing();
+```
 
-## Java 11
+- Removed deprecated packages,
+```
+java.xml.ws
+java.xml.bind
+java.activation
+java.xml.ws.annotation
+java.corba
+java.transaction
+java.se.ee
+jdk.xml.ws
+jdk.xml.bind
+```
+
+- Make file read and write convinient,
+
+```
+Path path = Files.writeString(Files.createTempFile("temporary", ".txt"), "Something to write!");
+
+String fileContent = Files.readString(path);
+System.out.println(fileContent);
+```
 
 ## Java 12
 
@@ -155,7 +186,7 @@ Notice the multiple `StringBuilder` invocations in case of Java 8, which is repl
 
 ## Java 16
 
-## Java 17
+## Java 17 (LTS)
 
 ## Java 18
 
