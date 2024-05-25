@@ -365,6 +365,7 @@ sealed class Carnivore extends Animal{}
 
 //class Unknown extends Animal{} // Not allowed to extend
 ```
+
 > Subclass of a sealed class must have either of the following modifiers,
 > - `sealed` : Will allow to be extended further by permitted classes.
 > - `non-sealed` : Will allow to be extended further by any classes.
@@ -380,6 +381,7 @@ non-sealed class Omnivore extends Animal {}
 
 final class Tiger extends Carnivore{}
 ```
+
 - Records can implement the sealed interfaces,
 ```
 sealed interface Food permits Creature {
