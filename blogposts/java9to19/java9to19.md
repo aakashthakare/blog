@@ -10,7 +10,7 @@ Java 8 is still extensively used in the industry and many applications will grad
 In this post we will take a look at the evolution happened in Java language from Java 9 to Java 19. Note that each version comes with many improvements, bug fixes and variety of features, we will cover the ones which are majorly used and can impact our day to day developement.
 
 ## Java 9
-Factory methods for collection
+### Factory methods for collection
 ```
     List immutableL = List.of(1, 2, 3);
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
@@ -18,7 +18,8 @@ Factory methods for collection
 JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
 <img src="images/jshell.png" width=640 height=320>
 
-Private methods in interface. This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
+### Private methods in interface. 
+This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
 ```
     interface Student {
     private String joinNames(String firstName, String lastName) {
@@ -35,7 +36,7 @@ Private methods in interface. This will avoid code duplication and better separa
 }
 ```
 
-Step in a direction to optimize String concatenation.
+### Step in direction to optimize String concatenation.
 
 For the given class,
 ```
