@@ -448,6 +448,7 @@ String value = switch (obj) {
 
 ## Java 18
 - Introduce @snippet in JavaDoc to write code in comments,
+
 ```
 /**
 * {@snippet:
@@ -458,11 +459,14 @@ public void testMethod() {
 
 }
 ```
+
 - Finalization is deprecated. 
 
 ## Java 19
 - Preview Virtual Threads, lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
+
 ```
 ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 ```
+
 - Structured Concurrency (Incubator), which sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.
