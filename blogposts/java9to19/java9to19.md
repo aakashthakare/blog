@@ -167,7 +167,8 @@ jdk.xml.ws
 jdk.xml.bind
 ```
 
-- Make file read and write convinient,
+- Make file read and write convenient,
+
 ```
 Path path = Files.writeString(Files.createTempFile("temporary", ".txt"), "Something to write!");
 
@@ -251,6 +252,7 @@ Hello
     Hello
 ```
 - Convenient method to transform String,
+
 ```
 String numbers = "1:ONE,2:TWO,3:THREE";
 Map<Integer, String> map = numbers.transform(input -> {
