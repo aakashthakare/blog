@@ -290,6 +290,69 @@ int answer = switch (number) {
 ```
 
 ## Java 14
+- Preview of `records`, a data class.
+```
+record Person(String name, int age){}
+```
+Can be used,
+```
+Person person = new Person("Human", 999);
+System.out.printf("Person %s, age %d\n", person.name(), person.age());
+```
+> Things to note about `record`
+> - Can not extend, can not be extended by class
+> - Can not be abstract
+> - Allows static fields and methods 
+> - Instance fields can be declared during initialization.
+> - Declared fields are private and final
+
+```
+record Person(String name, int age){
+    // int anything = 0; // Not allowed
+    static int anything = 0;
+
+    public String personDetails() {
+        return String.format("Person %s, age %d\n", name(), age());
+    }
+    Person {
+        if(name == "Human") {
+            throw new RuntimeException("Invalid name");
+        }
+    }
+}
+```
+Records can implement interfaces,
+```
+interface Human {
+    public String personDetails();
+}
+
+record Person(String name, int age) implements Human{
+    public String personDetails() {
+        return String.format("Person %s, age %d\n", name(), age());
+    }
+}
+```
+It can support multiple constructors as well,
+```
+record Person(String name, int age){
+    public Person() {
+        this("Human", 9999);
+    }
+    public Person (int age) {
+        this("Human", age);
+    }
+}
+```
+- Allow trailing space in text block,
+```
+String textBlock = """
+    I can write anything,
+    without adding \\n in the String.\s\s\s
+    """;
+System.out.println(textBlock);
+```
+
 
 ## Java 15
 
