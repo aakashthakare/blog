@@ -56,10 +56,17 @@ labels:
 def publish():
     post_id = _postid_()
     service = _init_service_()
-    post = service.posts().get(blogId=BLOG_ID, postId=post_id).execute()
-    post['status'] = 'LIVE'
-    published = service.posts().update(blogId=BLOG_ID, postId=post_id, body=post).execute()
-    print(f"Draft post published at: {published['url']}")
+
+    draft_posts = service.posts().list(blogId=BLOG_ID, status='DRAFT').execute()
+
+    if 'items' in draft_posts:
+        for post in draft_posts['items']:
+            if post['id'] == post_id:
+                post['status'] = 'LIVE'
+                published = service.posts().publish(blogId=BLOG_ID, postId=post_id).execute()
+                print(f"Draft post published at: {published['url']}")
+    else:
+        print(f"No draft posts found with given id : {post_id}.")
 
 def draft():
     post = _post_()
