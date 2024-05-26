@@ -3,6 +3,7 @@ layout: post
 permalink: /
 title: Java 9 to 19
 post: 4354712550862386194
+lables: Java
 ---
 
 Java 8 is still extensively used in the industry and many applications will gradually shift to newer Java version, especially the LTS versions. 
@@ -491,10 +492,14 @@ public void testMethod() {
 The use of `finalize()` method is discouraged and the support will be removed in future.
 
 ## Java 19
-Preview Virtual Threads, lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
+
+#### Preview Virtual Threads
+
+lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
 
 ```
 ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 ```
 
-Structured Concurrency (Incubator), which sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.
+#### Structured Concurrency (Incubator)
+Sounds interesting, it enables to consider multiple threads as a unit. This will going to give better control over multithreaded programs.

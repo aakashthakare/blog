@@ -45,6 +45,7 @@ layout: post
 permalink: /
 title: {title}
 post: {postId}
+labels:
 ---
 """)
         
@@ -76,6 +77,7 @@ def _post_():
             img['src'] = 'https://github.com/aakashthakare/blog/blob/draft/' + sys.argv[3] + '/blogposts/' + sys.argv[3] + '/' + img['src'] + '?raw=true'
         
         postid = soup.find(id = 'atptid').string
+        labels = soup.find(id = 'labelsid').string.split(",")
         title = soup.find(id = 'titleid').string
 
         soup.find('span', id="atptid").decompose()
@@ -86,7 +88,8 @@ def _post_():
         post_html = {
             "kind": "blogger#post",
             "title": f"{title}",
-            "content": f"{body}"
+            "content": f"{body}",
+            "labels": labels
         }
 
         return postid, post_html
