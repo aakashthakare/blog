@@ -86,6 +86,7 @@ def _post_():
 
         soup.find('span', id="atptid").decompose()
         soup.find('span', id="titleid").decompose()
+        soup.find('span', id="labelsid").decompose()
 
         body = str(soup.find('div', {"id": "post-main"}))
 
