@@ -3,7 +3,7 @@ layout: post
 permalink: /
 title: Java 9 to 19
 post: 4354712550862386194
-lables: Java
+labels: Java
 ---
 
 Java 8 is still extensively used in the industry and many applications will gradually shift to newer Java version, especially the LTS versions. 

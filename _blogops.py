@@ -77,8 +77,12 @@ def _post_():
             img['src'] = 'https://github.com/aakashthakare/blog/blob/draft/' + sys.argv[3] + '/blogposts/' + sys.argv[3] + '/' + img['src'] + '?raw=true'
         
         postid = soup.find(id = 'atptid').string
-        labels = soup.find(id = 'labelsid').string.split(",")
         title = soup.find(id = 'titleid').string
+
+        labelStr = soup.find(id = 'labelsid').string
+        labels = []
+        if labelStr:
+            labels = labelStr.split(",")
 
         soup.find('span', id="atptid").decompose()
         soup.find('span', id="titleid").decompose()
