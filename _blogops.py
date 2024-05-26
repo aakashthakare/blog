@@ -53,7 +53,14 @@ labels:
     except HttpError as error:
         print(f"An error occurred: {error}")
 
-def update():
+def publish():
+    post_id = _postid_()
+    post = service.posts().get(blogId=blog_id, postId=post_id).execute()
+    post['status'] = 'LIVE'
+    published = service.posts().update(blogId=blog_id, postId=post_id, body=post).execute()
+    print(f"Draft post published at: {published['url']}")
+
+def draft():
     post = _post_()
     service = _init_service_()
 
@@ -68,6 +75,12 @@ def _init_service_():
     credentials = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
     service = googleapiclient.discovery.build('blogger', 'v3', credentials=credentials)
     return service
+
+def _postid_():
+    with open(sys.argv[2], 'r') as file:
+        soup = BeautifulSoup(file.read(), "html.parser")
+        postid = soup.find(id = 'atptid').string
+        return postid
 
 def _post_():
     with open(sys.argv[2], 'r') as file:
