@@ -1,0 +1,48 @@
+name: Publish Blog Post
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  publishing:
+    if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client bs4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+      
+      - name: Install Ruby dependencies
+        run: |
+          cd jekyll
+          bundle install
+          cd ..
+
+      - name: Create Token file
+        run: |
+          echo "${{ secrets.TOKEN_JSON }}" > token.json
+
+      - name: Blog action
+        env:
+          TOKEN_FILE: token.json
+          BLOG_ID: ${{ secrets.BLOG_ID }}
+        run: |
+            bash blog.sh ${{ github.event.pull_request.head.ref }}

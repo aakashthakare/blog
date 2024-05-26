@@ -45,6 +45,7 @@ layout: post
 permalink: /
 title: {title}
 post: {postId}
+labels:
 ---
 """)
         
@@ -52,7 +53,14 @@ post: {postId}
     except HttpError as error:
         print(f"An error occurred: {error}")
 
-def update():
+def publish():
+    post_id = _postid_()
+    post = service.posts().get(blogId=blog_id, postId=post_id).execute()
+    post['status'] = 'LIVE'
+    published = service.posts().update(blogId=blog_id, postId=post_id, body=post).execute()
+    print(f"Draft post published at: {published['url']}")
+
+def draft():
     post = _post_()
     service = _init_service_()
 
@@ -68,6 +76,12 @@ def _init_service_():
     service = googleapiclient.discovery.build('blogger', 'v3', credentials=credentials)
     return service
 
+def _postid_():
+    with open(sys.argv[2], 'r') as file:
+        soup = BeautifulSoup(file.read(), "html.parser")
+        postid = soup.find(id = 'atptid').string
+        return postid
+
 def _post_():
     with open(sys.argv[2], 'r') as file:
         soup = BeautifulSoup(file.read(), "html.parser")
@@ -78,15 +92,22 @@ def _post_():
         postid = soup.find(id = 'atptid').string
         title = soup.find(id = 'titleid').string
 
+        labelStr = soup.find(id = 'labelsid').string
+        labels = []
+        if labelStr:
+            labels = labelStr.split(",")
+
         soup.find('span', id="atptid").decompose()
         soup.find('span', id="titleid").decompose()
+        soup.find('span', id="labelsid").decompose()
 
         body = str(soup.find('div', {"id": "post-main"}))
 
         post_html = {
             "kind": "blogger#post",
             "title": f"{title}",
-            "content": f"{body}"
+            "content": f"{body}",
+            "labels": labels
         }
 
         return postid, post_html
