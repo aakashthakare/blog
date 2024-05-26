@@ -56,9 +56,9 @@ labels:
 def publish():
     post_id = _postid_()
     service = _init_service_()
-    post = service.posts().get(blogId=blog_id, postId=post_id).execute()
+    post = service.posts().get(blogId=BLOG_ID, postId=post_id).execute()
     post['status'] = 'LIVE'
-    published = service.posts().update(blogId=blog_id, postId=post_id, body=post).execute()
+    published = service.posts().update(blogId=BLOG_ID, postId=post_id, body=post).execute()
     print(f"Draft post published at: {published['url']}")
 
 def draft():
