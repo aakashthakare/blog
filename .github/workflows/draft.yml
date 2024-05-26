@@ -6,7 +6,7 @@ on:
       - "draft/**"
 
 jobs:
-  build:
+  drafting:
     runs-on: ubuntu-latest
     
     steps:
