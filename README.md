@@ -1,16 +1,14 @@
-# Blog System
+# Blog
 
 ## What is it?
-This repository is for my blogs. 
-I collect notes and prepare a blog draft with the help of repository.
-
 It's a,
-- System to build and write blogs.
+- System to write and publish blog posts.
 - Collection of all notes and resources.
+- Scratchpad to craft future posts.
 
 ## Tools
+- Markdown
+- HTML
+- Shell
 - Jekyll
 - Python3
-- Markdown
-- Shell
-- HTML
