@@ -17,13 +17,14 @@ In this post we will take a look at the evolution happened in Java language from
     List immutableL = List.of(1, 2, 3);
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
 ```
-JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
+
+#### JShell: Java Shell, or REPL (Read Evaluate Print Loop) to execute java constructs directly in command line.
 <img src="images/jshell.png" width=640 height=320>
 
 #### Private methods in interface. 
 This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
 ```
-    interface Student {
+interface Student {
     private String joinNames(String firstName, String lastName) {
         return String.join(firstName, " ",lastName);
     }
