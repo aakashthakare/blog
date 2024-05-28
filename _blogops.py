@@ -1,11 +1,10 @@
-import json
 import os
 import sys
-import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
-from google.oauth2.credentials import Credentials
+
 from googleapiclient.errors import HttpError
+from google.oauth2.credentials import Credentials
 from bs4 import BeautifulSoup
 
 SCOPES = ['https://www.googleapis.com/auth/blogger']
@@ -18,7 +17,7 @@ def refresh_token():
     credentials = flow.run_local_server(port=8080)
     
     with open(TOKEN_FILE, 'w') as token:
-        token.write(creds.to_json())
+        token.write(credentials.to_json())
 
 def init():
     service = _init_service_()
