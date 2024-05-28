@@ -36,6 +36,6 @@ else:
     print("No draft posts found")
 ```
 
-Same thing applies to scheduled post as well, we have to fetch all the posts and filter respectively. 
+Same thing applies to scheduled post as well, we have to fetch all the posts and filter respectively. It's not something related to the python library, with other languages as well the same result is being returned. 
 
 I spend some time to identify why the API is not returning unpublished post with the help of GET API but couldn't find any official clarification for the same. I feel, it's by design not returning the unpublished ones to avoid any repercussions while doing some operations on the returned post considering them as published.
