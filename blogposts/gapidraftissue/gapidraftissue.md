@@ -6,13 +6,15 @@ post: 1263537549660620918
 labels:
 ---
 
-While fetching the drafts with the help og [Blogger API v3](https://developers.google.com/blogger/docs/3.0/using), I realized the API was not returning the drafts. Even after supplying the post id or the status it was returning `404 Not Found`. 
+Google provides APIs to integrate your system with existing Google services for various purpose. I started exploring APIs related to Blogger for this Blog to automate things and building a convinient system of writing and publishing blog. I came across with one scenario which I would like to share.
+
+While fetching the drafts with the help of [Blogger API v3](https://developers.google.com/blogger/docs/3.0/using), I realized the API was not returning the drafts. Even after supplying the post id or the status it was returning `404 Not Found`. 
 
 ```
 draft_post = service.posts().get(blogId=blog_id, postId=post_id).execute()
 ```
 
-This is an intended behavior from the API, for some reason the GET API is not returning the draft post. Following was a failed attempt too, loose attempt to make it work.
+This is an intended behavior from the API, for some reason the GET API is not returning the draft post. Following was a loose attempt to make it work, but failed. However, every other source was claiming this to be working, but wasn't.
 
 ```
 draft_post = service.posts().get(blogId=blog_id, postId=post_id, status='DRAFT').execute()
