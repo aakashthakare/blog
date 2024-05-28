@@ -3,7 +3,7 @@ layout: post
 permalink: /
 title: Blogger API fetch drafts
 post: 1263537549660620918
-labels:
+labels: Python, Blogger
 ---
 
 Google provides APIs to integrate your system with existing Google services for various purpose. I started exploring APIs related to Blogger for this Blog to automate things and building a convinient system of writing and publishing blog. I came across with one scenario which I would like to share.
