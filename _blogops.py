@@ -17,7 +17,7 @@ def refresh_token():
     credentials = flow.run_local_server(port=8080)
     
     with open(TOKEN_FILE, 'w') as token:
-        token.write(creds.to_json())
+        token.write(credentials.to_json())
 
 def init():
     service = _init_service_()
