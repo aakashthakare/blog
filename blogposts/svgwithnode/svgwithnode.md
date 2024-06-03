@@ -69,4 +69,8 @@ Later I deployed this on Google Cloud Function to make it accessible for markdow
 
 ### Next
 
-I would like to make it more interesting going forward. I am thinking to introduce icons or even images in it. This way it will give flexibility to caller of the function to build different styles of tag with different content.
+This was a very interesting idea which I can publish and used in my own GitHub profile or even in readme files of repositories.
+
+I would like to make it more interesting going forward. I am thinking to introduce icons or even images in it. This way it will give flexibility to caller of the function to build different styles of tag with different content. 
+
+This can be implemented without using RoughJS. I will see if I can do it without using it.
