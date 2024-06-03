@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /
-title: svgwithnode
+title: Build SVG in nodeJS
 post: 2894909532221310478
 labels: javascript,svg
 ---
