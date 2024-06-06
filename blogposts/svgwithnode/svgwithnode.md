@@ -3,7 +3,7 @@ layout: post
 permalink: /
 title: Build SVG in nodeJS
 post: 2894909532221310478
-labels: javascript,svg
+labels: Javascript,svg
 ---
 
 ### Purpose
