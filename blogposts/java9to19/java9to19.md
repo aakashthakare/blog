@@ -151,7 +151,8 @@ Notice the multiple `StringBuilder` invocations in case of Java 8, which is repl
 
 #### Execute Java file directly without compiling with `javac`. 
 `java` command internally takes care of the compilation.
-Some helper methods for `String`
+
+#### Some helper methods for `String`
 ```
 String str = "Hello";
 boolean isBlank = str.isBlank();
