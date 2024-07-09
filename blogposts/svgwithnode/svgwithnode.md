@@ -16,7 +16,7 @@ Building svg from scratch is quite tricky, I got to know about [Roughjs](https:/
 
 With the help of monspace fonts, we can exactly calculate the width and height required for the tag. I tried to keep it as dynamically as possible.
 
-```java
+```javascript
 const { DOMImplementation, XMLSerializer } = require('xmldom');
 const xmlSerializer = new XMLSerializer();
 const document = new DOMImplementation().createDocument('http://www.w3.org/1999/xhtml', 'html', null);
