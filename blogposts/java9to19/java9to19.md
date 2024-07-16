@@ -13,7 +13,7 @@ In this post we will take a look at the evolution happened in Java language from
 ## Java 9
 
 #### Factory methods for collection
-```
+```java
     List immutableL = List.of(1, 2, 3);
     Map immutableM = Map.of(1, "ONE", 2, "TWO", 3, "THREE")
 ```
@@ -23,7 +23,7 @@ In this post we will take a look at the evolution happened in Java language from
 
 #### Private methods in interface. 
 This will avoid code duplication and better separation of concern when it comes to implementing default and static methods in interface.
-```
+```java
 interface Student {
     private String joinNames(String firstName, String lastName) {
         return String.join(firstName, " ",lastName);
@@ -42,7 +42,7 @@ interface Student {
 #### Step in direction to optimize String concatenation.
 
 For the given class,
-```
+```java
 public class Test {
     public static void main(String[] args) {
         String str = args[0] + " and " + args[1];
@@ -53,7 +53,7 @@ public class Test {
 If we compile and check the bytecode, we can notice significant different in the way concatenation is handled. 
 
 In Java 8,
-```
+```shell
 ➜  java git:(main) ✗ java -version 
 openjdk version "1.8.0_362"
 OpenJDK Runtime Environment (build 1.8.0_362-bre_2023_01_22_03_30-b00)
@@ -96,7 +96,7 @@ public class Test {
 
 In Java 9,
 
-```
+```shell
 ➜  java git:(main) ✗ java -version 
 openjdk version "9"
 OpenJDK Runtime Environment (build 9+181)
@@ -130,19 +130,19 @@ Notice the multiple `StringBuilder` invocations in case of Java 8, which is repl
 ## Java 10
 
 #### Local variable type interface, use `var` to declare.
-```
+```java
     var i = 1;
     var str = "Hello";
     var student = getStudent();
 ```
 
 #### Static factory methods to create immutable copy of Collection,
-```
+```java
     List<String> immutable = List.copyOf(otherList);
 ```
 
 `orElseThrow()` in Optional
-```
+```java
     Optional<Object> optional = Optional.ofNullable(null);
     optional.orElseThrow(() -> new RuntimeException("Something went wrong!"));
 ```
@@ -153,7 +153,7 @@ Notice the multiple `StringBuilder` invocations in case of Java 8, which is repl
 `java` command internally takes care of the compilation.
 
 #### Some helper methods for `String`
-```
+```java
 String str = "Hello";
 boolean isBlank = str.isBlank();
 str.lines().forEach(System.out::println);
@@ -177,7 +177,7 @@ jdk.xml.bind
 
 #### Make file read and write convenient,
 
-```
+```java
 Path path = Files.writeString(Files.createTempFile("temporary", ".txt"), "Something to write!");
 
 String fileContent = Files.readString(path);
@@ -189,7 +189,7 @@ System.out.println(fileContent);
 #### Switch can be an expression, changes are in preview.
 
 Before Java 12
-```
+```java
 Animals animal = Animals.COW;
 
 switch (animal) {
@@ -205,7 +205,7 @@ switch (animal) {
 ```
 
 Can now be reduced to,
-```
+```java
 String animalType = switch (animal) {
     case COW, GOAT -> "Herbivore";
     case TIGER,  LION -> "Carnivore";
@@ -213,20 +213,20 @@ String animalType = switch (animal) {
 ```
 
 #### No need to typecast for `instanceof`,
-```
+```java
 if(object instanceof String) {
     System.out.println(((String)object).toUpperCase());
 }
 ```
 but now you can do,
-```
+```java
 if(object instanceof String str) {
     System.out.println(str.toUpperCase());
 }
 ```
 
 #### Compare files,
-```
+```java
 try {
     Path filePath1 = Files.createTempFile("abc1", ".txt");
     Path filePath2 = Files.createTempFile("abc2", ".txt");
@@ -253,7 +253,7 @@ Mismatch found at 6
 
 String Identation,
 
-```
+```java
 String str = "Hello";
 for(int i = 0 ; i < 5; i++) {
     System.out.print(str.indent(i));
@@ -272,7 +272,7 @@ Hello
 
 Convenient method to transform String,
 
-```
+```java
 String numbers = "1:ONE,2:TWO,3:THREE";
 Map<Integer, String> map = numbers.transform(input -> {
     Map<Integer, String> output =
@@ -287,7 +287,7 @@ System.out.println(map);
 ## Java 13
 
 #### Text block support in String,
-```
+```java
 String textBlock = """
     I can write anything,
     without adding \\n in the String.
@@ -296,11 +296,11 @@ System.out.println(textBlock);
 ```
 
 #### New Methods in String for format,
-```
+```java
 String anything = "Hello %d and %s".formatted(1, "ONE");
 ```
 Intoduced `yield` in switch case, this will replace the `break` for cases where we want to return the number. Difference between `yeild` and `return` is that `yeild` will return the value to `switch` invocation while `return` will return the value to the caller of the method.
-```
+```java
 int answer = switch (number) {
     case 1:
     case 3:
@@ -315,14 +315,15 @@ int answer = switch (number) {
 ## Java 14
 
 #### Preview of `records`, a data class.
-```
+```java
 record Person(String name, int age){}
 ```
 Can be used,
-```
+```java
 Person person = new Person("Human", 999);
 System.out.printf("Person %s, age %d\n", person.name(), person.age());
 ```
+
 Things to note about `record`
 - Can not extend, can not be extended by class
 - Can not be abstract
@@ -330,7 +331,7 @@ Things to note about `record`
 - Instance fields can be declared during initialization.
 - Declared fields are private and final
 
-```
+```java
 record Person(String name, int age){
     // int anything = 0; // Not allowed
     static int anything = 0;
@@ -347,7 +348,7 @@ record Person(String name, int age){
 ```
 
 #### Records can implement interfaces,
-```
+```java
 interface Human {
     public String personDetails();
 }
@@ -359,7 +360,7 @@ record Person(String name, int age) implements Human{
 }
 ```
 It can support multiple constructors as well,
-```
+```java
 record Person(String name, int age){
     public Person() {
         this("Human", 9999);
@@ -370,7 +371,7 @@ record Person(String name, int age){
 }
 ```
 Allow trailing space in text block,
-```
+```java
 String textBlock = """
     I can write anything,
     without adding \\n in the String.\s\s\s
@@ -384,7 +385,7 @@ System.out.println(textBlock);
 
 to allow only specific types which can extend or implement respectively.
 
-```
+```java
 public abstract sealed class Animal permits Herbivore, Carnivore {
 }
 
@@ -399,7 +400,7 @@ Subclass of a sealed class must have either of the following modifiers,
 - `non-sealed` : Will allow to be extended further by any classes.
 - `final` : Will not allow to be extended further.
 
-```
+```java
 public abstract sealed class Animal permits Herbivore, Carnivore, Omnivore {
 }
 
@@ -412,7 +413,7 @@ final class Tiger extends Carnivore{}
 
 #### Records can implement the sealed interfaces,
 
-```
+```java
 sealed interface Food permits Creature {
     void doSomething();
 } 
@@ -427,7 +428,7 @@ record Creature(String name) implements Food {
 ## Java 16
 
 #### Pattern matching in `instanceof` no longer makes variable implicitly `final`
-```
+```java
 if(object instanceof String) {
     object = String.format("Result %s", object); // Would give compile time error prior to Java 16.
     System.out.println(object.toUpperCase());
@@ -435,7 +436,7 @@ if(object instanceof String) {
 ```
 
 #### New Vector API, incubator.
-```
+```java
 int[] odd = {1, 3, 5, 7};
 int[] even = {2, 4, 6, 8};
 var vector1 = IntVector.fromArray(IntVector.SPECIES_128, odd, 0);
@@ -455,7 +456,7 @@ Note that, to run the program you will need to add the module otherwise it won't
 ## Java 17 (LTS)
 
 #### `null` in switch,
-```
+```java
 switch (number) {
     case 1, 2, 3 -> System.out.println("Valid");
     case null -> System.out.println("Not available");
@@ -464,7 +465,7 @@ switch (number) {
 ```
 
 #### Pattern matching in switch,
-```
+```java
 String value = switch (obj) {
     case Integer i -> "Integer";
     case Long l    -> "Long";
@@ -479,7 +480,7 @@ String value = switch (obj) {
 
 #### Introduce @snippet in JavaDoc to write code in comments,
 
-```
+```java
 /**
 * {@snippet:
 *  int a = 10;
@@ -499,7 +500,7 @@ The use of `finalize()` method is discouraged and the support will be removed in
 
 lightweight threads which effectively shares the platform thread for optimal hardware utilisation.
 
-```
+```java
 ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 ```
 
