@@ -5,14 +5,14 @@ title: Frequently used Java stream operations
 post: 2298638202796766284
 labels:
 ---
-## Separate Odd and Even numbers  (`List<Integer>` to `Map<String, List<Integer>>`)
+#### Separate Odd and Even numbers  (`List<Integer>` to `Map<String, List<Integer>>`)
 
 ```java
 Map<String, List<Integer>> oddEvenMap = numbers.stream()  
         .collect(Collectors.groupingBy(i -> (i % 2 != 0 ? "Odd" : "Even")));
 ```
 
-## Find distinct values from `Map<String, List<Integer>`
+#### Find distinct values from `Map<String, List<Integer>`
 
 ```java
 Set<Integer> set = map.values().stream()
@@ -20,7 +20,7 @@ Set<Integer> set = map.values().stream()
 					.collect(Collectors.toSet());
 ```
 
-## Biggest Odd and Even from List (`List<Integer>` to `Map<String, Integer>`)
+#### Biggest Odd and Even from List (`List<Integer>` to `Map<String, Integer>`)
 
 ```java
 Map<String, Integer> bigOddEven = numbers.stream()  
@@ -28,7 +28,7 @@ Map<String, Integer> bigOddEven = numbers.stream()
 															        (i1 , i2) -> i1 > i2 ? i1 : i2));
 ```
 
-## Use value as key and create new map from existing
+#### Use value as key and create new map from existing
 
 ```java
 Map<String, Integer> map = new HashMap<>();  
@@ -45,7 +45,7 @@ Output
 {1=[a, b], 2=[c]}
 ```
 
-## Find frequency of each number in list
+#### Find frequency of each number in list
 
 ```java
 List<Integer> numbers = new ArrayList<>();  
@@ -65,7 +65,7 @@ Output
 {1=1, 2=1, 3=1, 4=2}
 ```
 
-## Remove from map based on condition on values
+#### Remove from map based on condition on values
 
 ```java
 Map<String, Integer> map = new HashMap<>();  
