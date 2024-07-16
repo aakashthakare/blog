@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /
-title: Frequently used Java stream operations
+title: Some useful stream operations
 post: 2298638202796766284
 labels:
 ---
@@ -23,9 +23,8 @@ Set<Integer> set = map.values().stream()
 Biggest Odd and Even from List (`List<Integer>` to `Map<String, Integer>`)
 
 ```java
-Map<String, Integer> bigOddEven = numbers.stream()  
-								        .collect(Collectors.toMap(i -> (i % 2 == 0 ? "Even" : "Odd"), Function.identity(), 
-															        (i1 , i2) -> i1 > i2 ? i1 : i2));
+Map<String, Integer> bigOddEven = numbers.stream()
+.collect(Collectors.toMap(i -> (i % 2 == 0 ? "Even" : "Odd"),  Function.identity(), (i1 , i2) -> i1 > i2 ? i1 : i2));
 ```
 
 Use value as key and create new map from existing
