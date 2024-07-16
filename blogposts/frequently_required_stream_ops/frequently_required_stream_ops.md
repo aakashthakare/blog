@@ -80,3 +80,20 @@ Output
 ```shell
 {c=2}
 ```
+
+#### Distinct and Sum of numbers
+```java
+Stream<Integer> distinct = numbers.stream().distinct();
+int s = numbers.stream().mapToInt(Integer::intValue).sum();
+```
+
+#### `IntSummaryStatistics` for Average, Sum, Min/Max
+
+```java
+IntSummaryStatistics intSummaryStatistics = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
+double average = intSummaryStatistics.getAverage();
+long sum = intSummaryStatistics.getSum();
+int max = intSummaryStatistics.getMax();
+int min = intSummaryStatistics.getMin();
+long count = intSummaryStatistics.getCount();
+```
