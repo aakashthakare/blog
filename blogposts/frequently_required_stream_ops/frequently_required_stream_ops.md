@@ -88,7 +88,6 @@ int s = numbers.stream().mapToInt(Integer::intValue).sum();
 ```
 
 #### `IntSummaryStatistics` for Average, Sum, Min/Max
-
 ```java
 IntSummaryStatistics intSummaryStatistics = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
 double average = intSummaryStatistics.getAverage();
