@@ -1,5 +1,7 @@
 # Blog
 
+![](images/Blog_System.png)
+
 ## What is it?
 It's a,
 - System to write and publish blog posts.
@@ -34,3 +36,6 @@ git pull --rebase
 5. Once ready with the blog post, create PR to Main
 
 6. Merge PR to publish the blogpost.
+
+
+
