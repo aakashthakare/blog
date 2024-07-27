@@ -6,7 +6,7 @@ post: 7821720236492148953
 labels:
 ---
 
-![](./images/image.png)
+<img src="images/image.png" width=640 height=320 />
 
 Base64 is popular system that transforms the binary data into limited set of 64 characters. 
 
