@@ -102,3 +102,4 @@ public class Encoder {
 }
 ```
 
+This program is implemented to make it more easier to understand. However, for optimal approach we can look into `java.util.Base64` class which is bit complex to understand and considers much bigger character set and scenarios than the implemented one.
