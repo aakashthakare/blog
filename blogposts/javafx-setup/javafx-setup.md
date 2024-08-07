@@ -33,7 +33,7 @@ Outline:
 
 
 ## Introduction
-Using JavaFX platform, we can build applications for desktop, mobile or embessed systems.
+Using JavaFX platform, we can build applications for desktop, mobile or embessed systems. It has large set of components to build rich user interface.
 
 JavaFX allows,
 - designing the user interface interactively using Scene Builder.
