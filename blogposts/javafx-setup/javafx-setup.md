@@ -9,17 +9,18 @@ labels: Java,JavaFX,Jar
 Outline:
 - [X] Summary
     - [X] Build desktop application using JavaFX 
-- [ ] Softwares used
-    - [ ] IntelliJ Community Edition
-    - [ ] Java
-    - [ ] Maven
-    - [ ] JavaFX SDK for Mac
+- [X] Softwares used
+    - [X] IntelliJ Community Edition
+    - [X] Java
+    - [X] Maven
+    - [X] JavaFX SDK for Mac
     - [ ] Environement (Path and Java_home)
-- [ ] Hello World (using IntelliJ)
-    - [ ] Create using Maven archtype
-    - [ ] Import in IntelliJ
-    - [ ] Changes required to be done in settings of IntelliJ
+- [X] Hello World (using IntelliJ)
+    - [-] Create using Maven archtype
+    - [X] Import in IntelliJ
+    - [X] Changes required to be done in settings of IntelliJ
     - [ ] Run, screenshot
+    - [ ] Dependencies javafx-control, graphics, fxml, base (Which are required when)
     - [ ] Access Resources
         - [ ] frxml and css setup
         - [ ] Load Image from resources 
@@ -33,7 +34,7 @@ Outline:
 
 
 ## Introduction
-Using JavaFX platform, we can build applications for desktop, mobile or embessed systems. It has large set of components to build rich user interface.
+Using JavaFX platform, we can build applications for desktop, mobile or embessed systems. It has large set of components to design rich user interface.
 
 JavaFX allows,
 - designing the user interface interactively using Scene Builder.
