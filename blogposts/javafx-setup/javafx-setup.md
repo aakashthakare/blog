@@ -32,6 +32,7 @@ Outline:
 - [ ] Template Project for JavaFX 
     - [ ] Create a template project in GitHub
 - [ ] Closing 
+    - [ ] Fix images size
 
 
 ## Introduction
@@ -55,33 +56,36 @@ We will be going to use following tools,
 ## Project Setup
 
 IntelliJ bundles JavaFX plugin in it.
-![0](<images/setup/Screenshot 2024-08-09 at 4.46.14 PM.png>)
+
+<img src="images/setup/Screenshot 2024-08-09 at 4.46.14 PM.png" height="520px" width="720px" />
 
 Create New Project in IntelliJ.
-![1](<images/setup/Screenshot 2024-08-08 at 10.19.21 PM.png>)
+
+<img src="images/setup/Screenshot 2024-08-08 at 10.19.21 PM.png" height="520px" width="720px" />
 
 Select JavaFX in side bar. Select Project SDK as Java 21.
 
-![2](<images/setup/Screenshot 2024-08-08 at 10.20.02 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.20.02 PM.png" height="520px" width="720px" />
 
 For now, we do not need any additional dependencies, we will just click on **Finish**.
 
-![3](<images/setup/Screenshot 2024-08-08 at 10.20.47 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.20.47 PM.png" height="520px" width="720px" />
 
 This will take time finish setting up project and indexing.
 
-![4](<images/setup/Screenshot 2024-08-08 at 10.21.27 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.21.27 PM.png" height="520px" width="720px" />
 
 Once it's ready we can simply run the Main class which is `HelloApplication.java` in this case.
 
-![5](<images/setup/Screenshot 2024-08-08 at 10.24.06 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.24.06 PM.png" height="520px" width="720px" />
 
 It should run successfully and show a window with a button "Hello!".
-![6](<images/setup/Screenshot 2024-08-08 at 10.26.59 PM.png>)
+
+<img src="images/setup/Screenshot 2024-08-08 at 10.26.59 PM.png" height="520px" width="720px" />
 
 As you can see some gibberish text is shown. You may see following logs in Console.
 
-![7](<images/setup/Screenshot 2024-08-08 at 10.25.48 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.25.48 PM.png" height="520px" width="720px" />
 
 This looked like some issue with the fonts. So I had to add following line in  main method of `HelloApplication.java`.
 
@@ -90,11 +94,14 @@ scene.getRoot().setStyle("-fx-font-family: 'serif'");
 ```
 
 After running it again it appeared like following,
-![8](<images/setup/Screenshot 2024-08-08 at 10.27.34 PM.png>)
+
+<img src="images/setup/Screenshot 2024-08-08 at 10.27.34 PM.png" height="520px" width="720px" />
+
 
 If you go to `Project Structure > Modules` you will find many OpenFX dependencies are added. 
 
-![9](<images/setup/Screenshot 2024-08-08 at 10.33.02 PM.png>)
+<img src="images/setup/Screenshot 2024-08-08 at 10.33.02 PM.png" height="520px" width="720px" />
+
 
 If we look into `pom.xml` file, we can see following dependecies are add for JavaFX.
 
