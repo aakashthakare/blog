@@ -6,35 +6,6 @@ post: 2518944094852483638
 labels: Java,JavaFX,Jar
 ---
 
-Outline:
-- [X] Summary
-    - [X] Build desktop application using JavaFX 
-- [X] Softwares used
-    - [X] IntelliJ Community Edition
-    - [X] Java
-    - [X] Maven
-    - [X] JavaFX SDK for Mac
-    - [ ] Environement (Path and Java_home)
-- [X] Hello World (using IntelliJ)
-    - [-] Create using Maven archtype
-    - [X] Import in IntelliJ
-    - [X] Changes required to be done in settings of IntelliJ
-    - [ ] Run, screenshot
-    - [ ] Dependencies javafx-control, graphics, fxml, base (Which are required when)
-    - [ ] Access Resources
-        - [ ] frxml and css setup
-        - [ ] Load Image from resources 
-    - [ ] Run, screenshot
-- [ ] Plugin to drag and drop components to build UI (Scene Builder https://www.jetbrains.com/help/idea/opening-fxml-files-in-javafx-scene-builder.html#open-in-scene-builder)
-- [ ] Module info file guide
-- [ ] Create fat Jar
-    - [ ] Maven shade plugin to create executable Jar
-- [ ] Template Project for JavaFX 
-    - [ ] Create a template project in GitHub
-- [ ] Closing 
-    - [ ] Fix images size
-
-
 ## Introduction
 Using JavaFX platform, we can build applications for desktop, mobile or embessed systems. It has large set of components to design rich user interface.
 
@@ -324,3 +295,5 @@ And this time it worked! (*with warning*)
 Aug 10, 2024 10:35:43 PM com.sun.javafx.application.PlatformImpl startup
 WARNING: Unsupported JavaFX configuration: classes were loaded from 'unnamed module @673ba40c'
 ```
+
+The shade plugin adds everything to the classpath and since JavaFX relies on modules this setup breaks the execution. Thus, as a workaround we introduce another class which can be an entry point to the execution instead of JavaFX starter application.
