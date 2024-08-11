@@ -58,7 +58,7 @@ It should run successfully and show a window with a button "Hello!".
 
 As you can see some gibberish text is shown. You may see following logs in Console.
 
-<img src="images/setup/Screenshot 2024-08-08 at 10.25.48 PM.png" height="520px" width="720px" />
+<img src="images/setup/Screenshot 2024-08-08 at 10.25.48 PM.png" height="80px" width="720px" />
 
 This looked like some issue with the fonts. So I had to add following line in  main method of `HelloApplication.java`.
 
@@ -131,7 +131,7 @@ I found the similar problem is discussed on the [forum](https://intellij-support
 
 I was using IntelliJ CE version shown in following image,
 
-<img src="images/setup/Screenshot 2024-08-10 at 10.01.53 PM.png" height="520px" width="720px" />
+<img src="images/setup/Screenshot 2024-08-10 at 10.01.53 PM.png" height="220px" width="380px" />
 
 Moreover, importing the same project to IntelliJ Ultimate Edition worked miraculously without any modifications. 
 
@@ -297,3 +297,5 @@ WARNING: Unsupported JavaFX configuration: classes were loaded from 'unnamed mod
 ```
 
 The shade plugin adds everything to the classpath and since JavaFX relies on modules this setup breaks the execution. Thus, as a workaround we introduce another class which can be an entry point to the execution instead of JavaFX starter application.
+
+Basically, if JavaFX application is loaded through classpath it actually breaks the encapsulation provided by modular approach. [Here](https://bugs.openjdk.org/browse/JDK-8256422) is the ticket for this warning.
