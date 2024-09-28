@@ -103,8 +103,6 @@ private static void virtual() throws InterruptedException {
 }
 ```
 
-
-
 And it worked, but took comparatively more time than platform thread, almost double.
 
 **Virtual : 49 ms**
@@ -129,3 +127,92 @@ private static void platform() throws InterruptedException {
 **Platform : 26 ms**
 
 For some reason, platform thread is winning here.
+
+I thought of replacing `System.out.println(Thread.currentThread().getThreadGroup().getName());` with `System.out.print(".");System.out.print(".");` to keep it simpler.
+
+If we run both methods together from the `main` method,
+
+```java
+public class Test {
+
+    public static void main(String[] args) throws InterruptedException {
+        platform();
+        virtual();
+    }
+
+    private static void virtual() throws InterruptedException {
+        Thread.startVirtualThread(() -> {
+            long start = System.currentTimeMillis();
+            for(int i = 0; i < 1000; i++) {
+                System.out.println(".");
+            }
+            long end = System.currentTimeMillis();
+            System.out.println("Virtual : " + (end - start) + " ms");
+        }).join();
+    }
+
+    private static void platform() throws InterruptedException {
+        Thread t = new Thread(() -> {
+            long start = System.currentTimeMillis();
+            for(int i = 0; i < 1000; i++) {
+                System.out.println(".");
+            }
+            long end = System.currentTimeMillis();
+            System.out.println("Platform : " + (end - start) + " ms");
+        });
+        t.start();
+        t.join();
+    }
+}
+```
+
+Multiple executions,
+- Platform : 19 ms and Virtual : 15 ms
+- Platform : 21 ms and Virtual : 24 ms
+- Platform : 21 ms and Virtual : 16 ms
+- Platform : 22 ms and Virtual : 14 ms
+- Platform : 22 ms and Virtual : 29 ms
+
+After changing the sequence of methods the result changes dramatically,
+
+```java
+...
+public static void main(String[] args) throws InterruptedException {
+    virtual();
+    platform();
+}
+...
+```
+
+Multiple executions,
+- Platform : 17 ms and Virtual : 60 ms
+- Platform : 7 ms and Virtual : 35 ms
+- Platform : 10 ms and Virtual : 47 ms
+- Platform : 9 ms and Virtual : 35 ms
+- Platform : 6 ms and Virtual : 30 ms
+
+Okay, lot of confusion here. Let's find answers of each one by one.
+
+### Reason
+
+**Why virtual thread couldn't execute?**
+
+In first case the problem is that the main thread exits before the virtual thread completes it's execution. We can definitely join the virtual thread to our main thread which we did. Again the non blocking behaviour made it behave this way.
+
+```java
+public static void main(String[] args) throws InterruptedException {
+    virtual();
+    Thread.sleep(50000);
+}
+```
+
+This gives **Virtual : 33 ms**
+
+**Why platform thread executed faster with join?**
+
+In case of virtual threads JVM has to deal with additional work underneath, which leads to slight delay in the execution. Even though it's one thread and we are joining it to main, compared to platform thread it took more time to finish. This ovehead may include things like park/unpark the task based on JVM or CPU bound decision making.
+
+
+**How sequence of method is impacting the thread task execution time?**
+
+Again the blocking nature of platform thread makes life of virtual thread easier. For platform thread executed first the JVM, CPU or I/O is managed differently compared to virtual thread if executed first. Since the task is pretty simple the impact is significantly lower but such differences can make developer wonder if not understood properly.
