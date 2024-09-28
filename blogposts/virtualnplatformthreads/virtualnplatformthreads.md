@@ -6,6 +6,9 @@ post: 5625999940656061571
 labels: Java, Thread
 ---
 
+![](imgs/img.png)
+
+
 This blog post is a raw comparison of platform and virtual threads. We will use both the types of threads and see how they behave and perform. 
 
 It is important to note that the execution time and other matrics may vary system to system, however, it can definitely give a rough idea about the overall picture. We will try to keep this comparison as fair as possible, if I fail to do so, feel free to post comment below. 
@@ -14,7 +17,7 @@ It is important to note that the execution time and other matrics may vary syste
 - MacBook Pro 
     - RAM 16 GB
     - Processor 2.6 GHz 6-Core Intel Core i7
-- Java 11
+- Java 21
 
 
 ## Time to start
@@ -87,6 +90,7 @@ private static void virtual() {
         System.out.println("Virtual : " + (end - start) + " ms");
     });
 }
+```
 
 It seems we need to use `join` here.
 
