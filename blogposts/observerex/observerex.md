@@ -10,7 +10,7 @@ Observer pattern is widely used in many real time applications. It is one of the
 
 Let's understand it with an example of stock market.
 
-![](./imgs/image%20copy.png)
+<img src="./imgs/image%20copy.png" height="520px" width="720px" />
 
 Basic idea is to observe something and get notified based on some condition so that observer can take necessary action accordingly.
 
@@ -88,13 +88,13 @@ Consider a scenario where a `Trader` is interested in specific stock and not all
 #### Which option is more suitable here and why?
 Preferred choice may be first one as it stops flow of unneccessary information to `Observer` which they are not interested in and saves function calls.
 
-### What is `StockMarket` is overloaded with lot of observers?
+#### What is `StockMarket` is overloaded with lot of observers?
 Considering the example, there can be lot of `Trader`s observing the stock market and wants a real time information. For each and every stock the pattern used will not likely going to scale. It may work but it may end up with higher latency.
 
-## What if one of the `Observer` call fails!?
+#### What if one of the `Observer` call fails!?
 All the subsequent observers should get notifications. Otherwise we may need to perform check to see whether the observer is active or not before notifying. In above example, if any of the observer fails it will not notify remaining observers.
 
-## Should StockMarket be responsible for notifying observers?
+#### Should StockMarket be responsible for notifying observers?
 That's a valid question. It can be moved to separate class to filter out events and notify to respective observers.
 
 This is pretty simple implementation of the observer pattern. We may need to look into other aspects of the system to deal with the issues arising in current design. For example, rather than immediately updating we can build a queue to fan out. But that's not the solution in all use cases. We need to take a wholestic view of the business and system requirements into consideration to decide the possible approach.
