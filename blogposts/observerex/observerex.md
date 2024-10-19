@@ -10,7 +10,7 @@ Observer pattern is widely used in many real time applications. It is one of the
 
 Let's understand it with an example of stock market.
 
-<img src="./imgs/image%20copy.png" height="520px" width="720px" />
+<img src="./imgs/image%20copy.png" height="420px" width="820px" />
 
 Basic idea is to observe something and get notified based on some condition so that observer can take necessary action accordingly.
 
