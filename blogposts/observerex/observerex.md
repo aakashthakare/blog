@@ -3,7 +3,7 @@ layout: post
 permalink: /
 title: Observer Pattern
 post: 2466173168202911654
-labels:
+labels: Java, Design Pattern
 ---
 
 Observer pattern is widely used in many real time applications. It is one of the behavioural design patterns. In this post we will try to understand it and try to answer questions around it.
@@ -16,7 +16,7 @@ Basic idea is to observe something and get notified based on some condition so t
 
 With following Java program it becomes a bit more cleared on how this design pattern fundamentally works.
 
-```
+```java
 class Stock {
     String name;
 
@@ -93,3 +93,8 @@ Considering the example, there can be lot of `Trader`s observing the stock marke
 
 ## What if one of the `Observer` call fails!?
 All the subsequent observers should get notifications. Otherwise we may need to perform check to see whether the observer is active or not before notifying. In above example, if any of the observer fails it will not notify remaining observers.
+
+## Should StockMarket be responsible for notifying observers?
+That's a valid question. It can be moved to separate class to filter out events and notify to respective observers.
+
+This is pretty simple implementation of the observer pattern. We may need to look into other aspects of the system to deal with the issues arising in current design. For example, rather than immediately updating we can build a queue to fan out. But that's not the solution in all use cases. We need to take a wholestic view of the business and system requirements into consideration to decide the possible approach.
