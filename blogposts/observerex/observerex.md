@@ -98,3 +98,6 @@ All the subsequent observers should get notifications. Otherwise we may need to 
 That's a valid question. It can be moved to separate class to filter out events and notify to respective observers.
 
 This is pretty simple implementation of the observer pattern. We may need to look into other aspects of the system to deal with the issues arising in current design. For example, rather than immediately updating we can build a queue to fan out. But that's not the solution in all use cases. We need to take a wholestic view of the business and system requirements into consideration to decide the possible approach.
+
+## Summary
+The observer pattern is a behavioural pattern which can be used to notify one or more observers of the subject in case of any state change. It's crutical to understand the scalability, performance concerns and heavy dependency on observer pattern before adapting this pattern on a large scale use case.
