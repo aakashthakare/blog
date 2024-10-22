@@ -1,0 +1,112 @@
+.titlewrapper, .tabs-inner, .main-inner, .column-left-inner, .content-inner {
+    padding: 0 !important;
+}
+
+div#sidebar-left-1, .tabs.section, .descriptionwrapper, .Header h1 {
+    margin: 0 !important;
+}
+
+body .navbar {
+    height: 0px !important;
+}
+
+a.report_abuse {
+    font-size: 80% !important;
+    margin: 0px;
+}
+
+.PopularPosts .widget-content ul li {
+    padding: 3px !important;
+}
+
+.widget .popular-posts ul, .widget.LinkList ul {
+    padding-left: 0;
+}
+
+.widget.LinkList ul {
+    list-style-type: none;
+}
+
+div.widget>h2,
+div.widget h2.title {
+    margin-bottom: 5px;
+}
+
+h3.post-title,
+.comments h4 {
+    padding: 0px !important;
+    margin-top: 5px !important;
+}
+
+.post-header {
+    margin: 5px !important;
+}
+
+.post-body {
+    font-size: 130%;
+}
+
+.post-feeds, .section hr, .blog-feeds, .region-inner.footer-inner {
+    display: none !important;
+}
+
+.blog-pager {
+    background: none !important;
+}
+
+.Header .description {
+    font-size: 180% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+#sidebar-left-1 .widget {
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+}
+
+
+.fauxcolumn-outer.fauxcolumn-left-outer, .titlewrapper h1 {
+    background: #4789AC;
+}
+
+.titlewrapper h1 {
+    padding: 15px 10px;
+}
+
+.Header h1 a, #BlogArchive2 h2, #Label2 h2, .archivedate a, #BlogArchive2_ArchiveList, .titlewrapper h1, .label-size, .label-size a {
+    color: white !important;
+}
+
+#BlogArchive2_ArchiveList {
+    padding: 10px;
+}
+
+#BlogArchive2 h2, #Label2 h2 {
+    padding: 10px 10px 0 10px;
+    margin-bottom: -8px;
+}
+
+.widget-content.cloud-label-widget-content {
+    padding: 10px;
+}
+
+#Image1_img {
+    visibility: visible;
+    height: 120px;
+    width: 120px;
+    margin-left: 17px;
+    border-radius: 140px;
+}
+
+.content {
+    padding-top: 10px;
+}
+
+.fauxborder-left.content-fauxborder-left {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.region-inner.header-inner {
+    box-shadow: rgba(0, 0, 0, 0) 0px 10px 20px, rgba(0, 0, 0, 0) 0px 6px 6px;
+}
