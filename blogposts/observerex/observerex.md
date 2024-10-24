@@ -79,7 +79,7 @@ class Trader implements StockObserver {
 }
 ```
 
-Note that the `StockMarket` is completely unaware of the underlying observer. Any class can be a observer not necessarily it to be a `Trader`. However, every `Trader` will be an `StockObserver` by default. 
+Note that the `StockMarket` is completely unaware of the underlying observer. Any class can be a observer not necessarily it to be a `Trader`. However, every `Trader` will be a `StockObserver` by default. 
 
 Consider a scenario where a `Trader` is interested in specific stock and not all stock. We can think of two options here,
 1. `StockMarket` can register `Trader` for specific `Stock`.
@@ -88,7 +88,7 @@ Consider a scenario where a `Trader` is interested in specific stock and not all
 #### Which option is more suitable here and why?
 Preferred choice may be first one as it stops flow of unneccessary information to `Observer` which they are not interested in and saves function calls.
 
-#### What is `StockMarket` is overloaded with lot of observers?
+#### What if `StockMarket` is overloaded with lot of observers?
 Considering the example, there can be lot of `Trader`s observing the stock market and wants a real time information. For each and every stock the pattern used will not likely going to scale. It may work but it may end up with higher latency.
 
 #### What if one of the `Observer` call fails!?
