@@ -30,7 +30,7 @@ When it comes to cost we should also consider the cost we need to pay to the per
 ### Service
 Choosing the right service for the job is very important when it comes to cost. There are certain services in AWS which you can choose for the same sort of job. There are many options for same purpose for example, S3 and EFS you can use for storage and both _may_ fulfill the requirement. However, the cost different is significant, for 1 GB of storage S3 can cost around 0.03$/month while EFS can cost 0.36$/month  (in US East - N. Verginia).
 
-![s3efs](image.png)
+<img src="image.png" height="420px" width="820px" />
 
 Ofcourse this doesn't mean you must choose s3 over EFS, both has their right use cases to serve. We need to understand which one we can pick and atleast review the cost as well before deciding the service to use.
 
@@ -39,7 +39,7 @@ Capacity of the instances we are using in infrastructure makes a huge difference
 
 There are multiple types of instances available, we need to review our need and find the most suitable one with required configurations.
 
-![alt text](image-1.png)
+<img src="image-1.png" height="420px" width="820px" />
 
 Details of all instance types can be found [here](https://aws.amazon.com/ec2/instance-types/).
 
@@ -48,11 +48,17 @@ Even though I specifically mentioned EC2 but it applies to RDS as well. Similar 
 We can also review this in AWS Cost Explorer which can help in right sizing the instances.
 
 ### Reserve
+Choose reserved instances over on demand instance if we are sure that we will need them for atleast year or ever more than that. Reserved instance pricing is locked in and not completely based on usage, while on demand will be billed on usage. Ultimately, you end up saving upto 70% for 3 year term.
 
+If we choose reserved `t3.large` instance for three years vs on demand instnace the monthly expense reduces by 50%. This difference will increase for high end instances upto 75%.
+
+<img src="image-2.png" height="420px" width="820px" />
 
 ### Alerts
+We can enable the billing alerts based on the billing metrics so that in advance we get to know about the possible cost for given month. We can get an estimation in advance so that we can prepare and even take action to reduce the cost if possible.
 
 ### Auto Transition
+
 
 ### Review & Clean Up
 
