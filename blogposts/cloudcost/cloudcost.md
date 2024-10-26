@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /
-title: cloudcost
+title: AWS Cloud Cost Optimization
 post: 7794618319534963023
 labels: Cloud,AWS,Cost
 ---
