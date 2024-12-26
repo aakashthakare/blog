@@ -7,7 +7,7 @@ labels: Cloud,AWS,Cost
 ---
 
 ## Introduction
-AWS Cloud is one of the biggest cloud player which has captured more than 31% of the cloud service market. The cost of the services is majorly on usage based, the more you use the more you pay. We as an individual or as an organization need to understand how much we can optimize the cost when it comes to AWS because there can be multiple ways to achieve _desired_ results in multiple ways but we are specifically looking for most optimal way.
+AWS Cloud is one of the biggest cloud player which has captured more than 31% of the cloud service market. The cost of the services is majorly on usage based, the more you use the more you pay. We as an individual or as an organization need to understand how much we can optimize the cost when it comes to AWS because there can be multiple ways to achieve _desired_ results but we are specifically looking for most optimal way.
 
 In many cases we can save cost by taking necessary actions, however, it's important to understand that saving cost should not be the first focus. It can come on the way to building it or even it's ready and now we have some dedicated time to attend the cost related aspect of it.
 
