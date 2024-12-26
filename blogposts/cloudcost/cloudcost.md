@@ -58,15 +58,13 @@ If we choose reserved `t3.large` instance for three years vs on demand instnace 
 We can enable the billing alerts based on the billing metrics so that in advance we get to know about the possible cost for given month. We can get an estimation in advance so that we can prepare and even take action to reduce the cost if possible.
 
 ### Auto Transition
-
+There are different options available in AWS to save money by shifting to tier as per the user. S3 Intelligent Tiering is one of the good example. It automatically detects the right fit for the object and moves it to most cost effective storage. Not necessarily this will fit all the usecases but ensure to explore such options for the service you are using so that we don't miss an opportunity to save money.
 
 ### Review & Clean Up
+Regular review and clean up unused resources may look unproductive or boring but 30 minute connect every month or quarter can definitely help to save a lot of money. Work pressure or busy schedule may pile up some unused ec2 machines, volumes, buckets etc. which we should regularly keep in check.
 
 ### Alternative Cloud
-
-### Business Requirement
+This is not an option all the time but nowadays most major cloud provider services are durable and robust, if cost can be major factor don't stick to one cloud provider and explore other alternatives which can be a huge saving in a longer run, rest assured quality and performance is not compromised.
 
 ## Conclusion
-
-
-## References
+In current situation of booming cloud services and competitive environment between cloud providers, we should be vigilant about the different factor in the service that we consume and the long term repurcissions, when it comes to cost. There are several ways which we can try to cut down cost as much as possible without compromising on the quality and performance of the system. However, being ignorant about cost and pricing may end up with wasting your money which could have been utilised better.
