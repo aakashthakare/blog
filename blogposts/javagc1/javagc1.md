@@ -1,14 +1,16 @@
 ---
 layout: post
 permalink: /
-title: Java Garbage Collector - Insights & Experiments
+title: Java Garbage Collector (Insights & Experiments) - Part 1
 post: 2473811668075049989
 labels: Java, JVM, GC
 ---
 
 <img src="imgs/gc_cover.jpeg" height="520px" width="720px" />
 
-I thought of trying out all types of Garbage Collectors in Java and decided to see how the behave in different scenarios. Creating one piece of code to see them in action wasn't possible for me, thus I thought of starting with sample program first to know whether switching garbage collector actually is working or not.
+## Introduction
+
+I thought of trying out all types of Garbage Collectors in Java and decided to see how they behave in different scenarios. Creating one piece of code to see them in action wasn't possible for me, thus I thought of starting with sample program first to know whether switching garbage collector actually is working or not.
 
 There are different types of garbage collectors in java, listing them below:
 - Serial
@@ -20,6 +22,7 @@ There are different types of garbage collectors in java, listing them below:
 
 For given java program (or application) I can switch to any given garbage collector using JVM option; `-XX:+UseXYZGC`. 
 
+## Know Which GC 
 But I wanted to print it in my program execution; just to see which GC is in action. I came across `java.lang.management` which has required information that I needed to confirm which garbage collector is in use. 
 
 In this API `ManagementFactory.getGarbageCollectorMXBeans()` returns all MX (Management Extension) Beans for the chosen Garbage Collectors. Note that from Java 9+ default garbage collectro is Z1.
@@ -71,6 +74,7 @@ private String whichGC() {
 }
 ```
 
+## Serial GC Play
 I thought of exploiting Serial GC to see what are it's limitation that Parallel GC can overcome. 
 
 Few basic things I knew about Serial GC,
@@ -82,7 +86,7 @@ I want to see when and how garbage collection occurs; I came across two JVM opti
 - `-XX:+PrintGC`: Prints GC event basic details
 - `-XX:+PrintGCDetails`: Prints GC details
 
-... but later realised both are deprecated in Java 9 and replaced by `-Xlog:gc` which is much flexible and highly configurable JVM option.
+... but later realised both are deprecated in Java 9 and replaced by `-Xlog:gc` which is much flexible and highly configurable JVM option. Realising I don't need ``java.lang.management` for printing GC this logs itself starts with the name of GC. But there has lot to explore in management API for sure.
 
 
 I thought of creating a simple program to see this GC doing something; but garbage collector will do clean up (_automatically_) in one of the following cases,
@@ -180,6 +184,7 @@ It's important to decode the log now what each part conveys,
 - `3.074ms` : Time taken for garbage collection.
 
 
+## Paralle GC Play
 Parallel GC internally uses multiple worker threads to perform the garbage collection which is faster than Serial GC. Thus I tried the same program with Parallel garbage collector option and got following output,
 
 ```shell
@@ -680,6 +685,8 @@ Interestingly, if I use serial GC in multi-thread program the output looks like 
 
 Just look at the pause time, it increases drastically and shoots upto ~11ms. Moreover, Full GC count increased from two to four almost doubled in case of Serial GC; the reason could be inefficient survivor space handling, slower compaction, lower throughput or allocation rate difference.
 
+
+## G1 GC Play
 To overcome challenges of Serial and Parallel GC. G1 brings following characteristics,
 - Better heap and CPU utilisation
 - Balanced thoughput with pause time goals
