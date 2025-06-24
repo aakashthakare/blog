@@ -6,7 +6,7 @@ post: 2473811668075049989
 labels:
 ---
 
-![cover](./imgs/gc_cover.png)
+![cover](./imgs/gc_cover.jpeg)
 
 I thought of trying out all types of Garbage Collectors in Java and decided to see how the behave in different scenarios. Creating one piece of code to see them in action wasn't possible for me, thus I thought of starting with sample program first to know whether switching garbage collector actually is working or not.
 
