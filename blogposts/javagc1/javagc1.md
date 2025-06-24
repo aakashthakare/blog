@@ -1,9 +1,9 @@
 ---
 layout: post
 permalink: /
-title: javagc1
+title: Java Garbage Collector - Insights & Experiments
 post: 2473811668075049989
-labels:
+labels: Java, JVM, GC
 ---
 
 ![cover](./imgs/gc_cover.jpeg)
