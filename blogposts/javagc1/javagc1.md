@@ -560,6 +560,7 @@ public class TryParallelGC {
     }
 }
 ```
+And the output changed a bit but the change wasn't visible easily.
 
 ```shell
 [0.011s][info][gc] Using Parallel
