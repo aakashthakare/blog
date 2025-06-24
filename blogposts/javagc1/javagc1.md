@@ -6,7 +6,7 @@ post: 2473811668075049989
 labels: Java, JVM, GC
 ---
 
-![cover](./imgs/gc_cover.jpeg)
+<img src="imgs/gc_cover.jpeg" height="520px" width="720px" />
 
 I thought of trying out all types of Garbage Collectors in Java and decided to see how the behave in different scenarios. Creating one piece of code to see them in action wasn't possible for me, thus I thought of starting with sample program first to know whether switching garbage collector actually is working or not.
 
