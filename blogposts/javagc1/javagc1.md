@@ -86,7 +86,7 @@ I want to see when and how garbage collection occurs; I came across two JVM opti
 - `-XX:+PrintGC`: Prints GC event basic details
 - `-XX:+PrintGCDetails`: Prints GC details
 
-... but later realised both are deprecated in Java 9 and replaced by `-Xlog:gc` which is much flexible and highly configurable JVM option. Realising I don't need ``java.lang.management` for printing GC this logs itself starts with the name of GC. But there has lot to explore in management API for sure.
+... but later realised both are deprecated in Java 9 and replaced by `-Xlog:gc` which is much flexible and highly configurable JVM option. Realising I don't need `java.lang.management` for printing GC this logs itself starts with the name of GC. But there has lot to explore in management API for sure.
 
 
 I thought of creating a simple program to see this GC doing something; but garbage collector will do clean up (_automatically_) in one of the following cases,
