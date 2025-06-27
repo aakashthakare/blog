@@ -6,7 +6,7 @@ post: 2473811668075049989
 labels: Java, JVM, GC
 ---
 
-<img src="imgs/gc_cover.jpeg" height="520px" width="720px" />
+<img src="imgs/gc_cover.jpeg" height="320px" width="100%" />
 
 ## Introduction
 
