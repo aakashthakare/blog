@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /
-title: Java Garbage Collector (Insights & Experiments) - Part 1
+title: Java Garbage Collector (Insights & Experiments)
 post: 2473811668075049989
 labels: Java, JVM, GC
 ---
