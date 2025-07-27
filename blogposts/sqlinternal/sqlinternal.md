@@ -37,7 +37,7 @@ Common errors that we observe in this layer includes following,
 When we want to learn about internal working of SQL, we first need to understand different phases a query goes through.
 
 
-<img src="./images/phases.png" height="420px" width="720px" />
+<img src="./images/phases.png" height="720px" width="920px" />
 
 A query goes through many phases to finally return the required result.
 
@@ -49,7 +49,7 @@ A query goes through many phases to finally return the required result.
 ### Storage Layer
 This layer manages how data is physically stored and accessed.
 
-<img src="./images/storage.png" height="420px" width="720px" />
+<img src="./images/storage.png" height="520px" width="920px" />
 
 The smallest data unit in storage is called page which is generally of 8KB. When there is a request to fetch the data it first checks in buffer (cache), if the data page is present it uses it otherwise looks into data file.
 
@@ -101,4 +101,4 @@ The end-to-end journey of the SQL query under the hood is as follows:
 - Query execution detail, resource usage, errors etc. are captured for monitoring.
 
 
-<img src="./images/journey.png" height="420px" width="720px" />
+<img src="./images/journey.png" height="520px" width="920px" />
