@@ -102,3 +102,5 @@ The end-to-end journey of the SQL query under the hood is as follows:
 
 
 <img src="./images/journey.png" height="520px" width="920px" />
+
+Individual database system has their own set of implementation and modifications to this architecture. We will deep dive into into each layer and it's components individually in upcoming post for better clarity.
