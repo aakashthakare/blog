@@ -101,4 +101,4 @@ The end-to-end journey of the SQL query under the hood is as follows:
 - Query execution detail, resource usage, errors etc. are captured for monitoring.
 
 
-<img src="./images/storage.png" height="420px" width="720px" />
+<img src="./images/journey.png" height="420px" width="720px" />
