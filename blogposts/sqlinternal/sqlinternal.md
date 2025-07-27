@@ -56,45 +56,45 @@ The smallest data unit in storage is called page which is generally of 8KB. When
 Two additional mechanisms background job, to clean up dirty pages, and transcation log, for durability and recovery are in place.
 
 ## Journey
-We understood the basic architecture of the database but the journey of query is still not fully visible. 
+We understood the basic architecture of the database system but the journey of query is still not fully visible. 
 
 The end-to-end journey of the SQL query under the hood is as follows:
 
 **Client**
-- The client (e.g. MySQL Workbench, API, Command Line Client) send the SQL statement `SELECT * from user` to the database server.
+- The client (e.g. MySQL Workbench) send the SQL statement `SELECT * from user` to the database server.
 
 **Connection**
-- Query travels over the network using the decided protocol
+- Query travels over the network using the dedicated protocols.
 - Authentication and user permissions are verified here.
 - A session is established!
 
 **Parsing**
-- Query received at SQL server
+- Query received at SQL server.
 - Query is parsed and broken into token for further processing.
-- Syntax validation takes place
+- Syntax validation takes place.
 
 **Binding**
-- Checks whether table and column actually exists
+- Checks whether table and column actually exists?
 - Data types checked
 
 **Optimization**
-- Optimizer evaluates possible plans to get data
-- Chooses most efficient execution plan
+- Optimizer evaluates possible plans to get data.
+- Chooses most efficient execution plan.
 
 **Data Access**
-- Transaction logs are captured
 - Execution plan triggers the data page retrival
-- First checks in cache
+- First checks in cache!
+- Transaction logs are captured.
 
 **Fetch Rows**
-- Rows of user table are scanned
-- If index is present rows are read as per the index
+- Rows of user table are scanned.
+- If index is present rows are read as per the index.
 
 **Concurrency**
-- Acquire lock on data pages; depending on transaction isolation level
+- Acquire lock on data pages; depending on transaction isolation level.
 
 **Result**
-- Engine assembles the rows as per the `SELECT` criteria 
+- Engine assembles the rows as per the `SELECT` criteria, 
 - Packed in resultset and sent back to the client
 
 **Logging**
