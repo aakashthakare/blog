@@ -72,13 +72,14 @@ For example,
 
 Once we have ruleset and the rules configured we need to enable SES to be the receiving party from the domain registar. But importantly mark the ruleset and rule as active so that they can start acting on the received email based on the configuration.
 
-## Auto Reply or Sending Email from SES
+# Send Email
+
 For enabling auto reply or sending mail from SES we need to add following records in DNS settings,
 - TXT records for SPF
 - TXT record for DMARC
 - CNAME records for DKIM
 
-### SPF (Sender Policy Framework)
+## SPF (Sender Policy Framework)
 If only SES would allow to send email.
 ```
 Type: TXT
@@ -86,7 +87,7 @@ Name: akashthakare.com
 Value: v=spf1 include:amazonses.com ~all
 ```
 
-### DMARC (Domain based Message Authentication Reporting & Conformance)
+## DMARC (Domain based Message Authentication Reporting & Conformance)
 This entry tells what action to take for unauthenticated emails.
 
 ```
@@ -95,7 +96,7 @@ Name: _dmarc
 Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@akashthakare.com
 ```
 
-### DKIM (DomainKeys Identified Mail)
+## DKIM (DomainKeys Identified Mail)
 We can see the CNAME that are given by SES needs to be configured in DNS Setting of the Domain provider to verify the identity, as currently it's in 'Verification pending' state.
 
 <img src="./images/dkim_config.png" height="420px" width="820px" />
@@ -103,7 +104,7 @@ We can see the CNAME that are given by SES needs to be configured in DNS Setting
 
 DKIM verification can take anywhere from a few minutes to several hours. Once verified, SES will begin receiving and processing emails based on your rule conditions.
 
-## Test 
+# Test It!
 Once the set up is in place after verification, we can send to the configured email as per the rulset to confirm the mail is received and necessary action has been taking place after receiving the email. In case there is an issue with the configuration SES would reject the email and you may see following response to the sent email.
 
 <img src="./images/email_failed.png" height="420px" width="720px" />
